@@ -27,9 +27,9 @@ I was looking for a minimal example of a kv web-server written in Rust, and I co
 
 ## API Endpoints
 
-- `GET /get/:key`: Retrieves the value associated with the specified key.
-- `GET /set/:key/:value`: Sets the value for the specified key.
-- `GET /del/:key`: Deletes the key-value pair associated with the specified key.
+- `GET /get/:key` Retrieves the value associated with the specified key.
+- `GET /set/:key/:value` Sets the value for the specified key.
+- `GET /del/:key` Deletes the key-value pair associated with the specified key.
 
 ## Examples
 
