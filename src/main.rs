@@ -13,7 +13,7 @@ async fn main() {
     let store: Arc<KeyValueStore> = Arc::new(KeyValueStore::default());
 
     let app = Router::new()
-        .route("/", get(|| async { Html("KV store".to_string()) }))
+        .route("/", get(home))
         .route("/get/:key", get(read))
         .route("/set/:key/:value", get(save))
         .route("/del/:key", get(delete))
@@ -23,8 +23,13 @@ async fn main() {
     let listener = tokio::net::TcpListener::bind("0.0.0.0:10000")
         .await
         .unwrap();
-
+    println!("Listening on {}", listener.local_addr().unwrap());
     axum::serve(listener, app).await.unwrap();
+}
+
+async fn home() -> Html<String> {
+    println!("serving root");
+    Html("KV store".to_string())
 }
 
 async fn read(
